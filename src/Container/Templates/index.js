@@ -1,6 +1,6 @@
 import Home from './Home';
-import ListMenu from './ListMenu';
+import SideListMenu from './SideListMenu';
 export {
     Home,
-    ListMenu,
+    SideListMenu,
 }

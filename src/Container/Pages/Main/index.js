@@ -3,7 +3,7 @@ import React, { memo, useCallback, useState } from 'react'
 import { CONSTANT } from '@Utils'
 import { useTheme } from 'react-native-paper'
 import Animated, { useAnimatedStyle, withSpring, withTiming } from 'react-native-reanimated';
-import { Home, ListMenu } from '@Templates'
+import { Home, SideListMenu } from '@Templates'
 
 export default memo(props => {
     const { width, height } = Dimensions.get('window')
@@ -21,7 +21,7 @@ export default memo(props => {
     return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
             <StatusBar backgroundColor={isMenuOpen ? colors.shark : colors.zircon} barStyle={isMenuOpen ? 'light-content' : 'dark-content'} />
-            <ListMenu {...props} onHideMenu={_onHide} />
+            <SideListMenu {...props} onHideMenu={_onHide} />
             <Animated.View style={[pageSizeStyle, {
                 position: 'absolute', alignSelf: 'center', backgroundColor: colors.zircon,
                 shadowColor: colors.alabaster, shadowOffset: { width: 0, height: 3, }, shadowOpacity: 0.27, shadowRadius: 4.65, elevation: 6,
