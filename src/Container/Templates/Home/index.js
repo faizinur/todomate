@@ -12,15 +12,35 @@ export default ({ onHideMenu }) => {
     const { colors } = useTheme();
     const { width } = Dimensions.get('window')
     // todos
-    const [todoType, setTodoType] = useState(0);
-    const todosType = [{ title: 'Hari ini', id: 0 }, { title: 'Mendatang', id: 1 }, { title: 'Selesai', id: 2 }];
-    const renderTodos = ({ item: { title, id } }) => <MyChip text={title} value={id == todoType} onPress={() => _onPressTodosType(id)} />
+    const [todoType, setTodoType] = useState({});
+    const todosType = [{ title: 'Permintaan', id: 0, status: 'AWATING' }, { title: 'Mendatang', id: 1, status: 'APPROVED' }, { title: 'Selesai', id: 2, status: 'DONE' }];
+    const renderTodos = ({ item: { title, id } }) => <MyChip text={title} value={id == todoType?.id} onPress={() => _onPressTodosType({ title, id })} />
     const _onPressTodosType = useCallback(setTodoType, [todoType]);
 
     // todolist
     const [selectedTodo, setSelectedTodo] = useState({});
-    const listTodo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-    const renderListTodo = ({ item }) => <MyCardTodo index={item} />
+    const listTodo = [
+        {
+            id: 0,
+            title: 'Mandi',
+            tanggal: '2020-01-01 06:00:00',
+            status: 'AWATING',
+        },
+        {
+            id: 1,
+            title: 'Belajar',
+            tanggal: '2020-01-01 07:00:00',
+            status: 'APPROVED',
+        },
+        {
+            id: 2,
+            title: 'Makan',
+            tanggal: '2020-01-01 08:00:00',
+            status: 'DONE',
+        },
+    ];
+    const renderListTodo = ({ item }) => <MyCardTodo todo={item} onPress={() => _onPressTodosCard(item)} />
+    const _onPressTodosCard = useCallback(setSelectedTodo, [selectedTodo]);
 
     // add TODO
     const _onAddTodo = () => {
@@ -43,7 +63,7 @@ export default ({ onHideMenu }) => {
             />
             <FlatList
                 data={listTodo}
-                keyExtractor={item => item}
+                keyExtractor={({ id, tanggal }) => `${id}-${tanggal}`}
                 renderItem={renderListTodo}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}

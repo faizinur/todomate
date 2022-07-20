@@ -7,7 +7,7 @@ export default memo(props => {
     const textStyles = {
         color: 'color' in props ? props.color : colors.shark,
         fontSize: 'xSmall' in props ? 10 : ('small' in props ? 12 : ('large' in props ? 16 : 14)),
-        fontWeight: 'bold' in props ? 'bold' : ('light' in props ? '600' : 'normal'),
+        fontWeight: 'bold' in props ? 'bold' : ('light' in props ? '300' : 'normal'),
         fontFamily: 'ReadexProRegular',
         lineHeight: 'xSmall' in props ? 12 : ('small' in props ? 16 : ('large' in props ? 20 : 18)),
         textAlign: 'center' in props ? 'center' : ('justify' in props ? 'justify' : ('left' in props ? 'left' : ('right' in props ? 'right' : 'left')))

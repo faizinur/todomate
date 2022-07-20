@@ -7,7 +7,7 @@ import { Home, SideListMenu } from '@Templates'
 
 export default memo(props => {
     const { width, height } = Dimensions.get('window')
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(true)
     const { colors } = useTheme();
     const pageSizeStyle = useAnimatedStyle(() => ({
         height: withSpring(isMenuOpen ? (height * .8) : height, CONSTANT.SPRING_CONFIG),

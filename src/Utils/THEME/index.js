@@ -17,6 +17,21 @@ export default {
         zircon: '#F3F6FF',
         valencia: '#E24C4B',
         caribbeanGreen: '#09DB93',
+        // sticky notes
+        persianPink: '#ff7eb9',
+        violetRed: '#ff65a3',
+        turquoiseBlue: '#7afcff',
+        paleCanary: '#feff9c',
+        goldenFizz: '#fff740',
+        // sticky notes
+        //pastel color
+        pastelPink: '#FFD3E1',
+        hawkesBlue: '#DDE3FD',
+        oysterBay: '#D4F4F6',
+        perfume: '#E0C3FC',
+        perano: '#A6C1EE',
+        frenchLilac: '#FDCBF1',
+        //pastel color
         text: 'black',
     },
     fonts: {
