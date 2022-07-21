@@ -7,7 +7,7 @@ export default memo(props => {
     const enabled = props.value || true;
     const bgColor = props.value ? colors.shark : 'transparent';
     const textColor = props.value ? colors.athensGray : colors.shark;
-    const borderColor = props.value ? 'transparent' : colors.shark;
+    const borderColor = 'transparent';//props.value ? 'transparent' : colors.shark;
     return <TouchableOpacity
         activeOpacity={.8}
         onPress={props?.onPress}
