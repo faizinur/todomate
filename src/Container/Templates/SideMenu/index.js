@@ -3,7 +3,7 @@ import React from 'react'
 import { useTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { MyText } from '@Atoms'
-export default ({ onHideMenu, listMenuPress }) => {
+export default ({ onHide, listPress }) => {
     const { colors } = useTheme();
     const listMenu = [
         { id: 0, title: 'Activity', icon: 'calendar-month-outline' },
@@ -15,7 +15,7 @@ export default ({ onHideMenu, listMenuPress }) => {
     const renderListMenu = (({ item, index }) =>
         <>
             {item.title == 'Setting' && <View style={{ height: .3, width: '55%', marginVertical: '5%', marginHorizontal: '5%', backgroundColor: `${colors.zircon}30` }} />}
-            <TouchableOpacity activeOpacity={.8} onPress={() => listMenuPress(index)}
+            <TouchableOpacity activeOpacity={.8} onPress={() => listPress(index)}
                 style={{ width: '70%', height: 50, justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row' }}>
                 <Icon name={item.icon} size={16} opacity={.65} color={colors.zircon} style={{ marginHorizontal: 10 }} />
                 <MyText opacity={.65} color={colors.zircon}>{item.title}</MyText>
@@ -25,7 +25,7 @@ export default ({ onHideMenu, listMenuPress }) => {
 
     return (
         <View style={{ flex: 1, backgroundColor: colors.shark }}>
-            <TouchableOpacity activeOpacity={.8} onPress={onHideMenu} style={{ width: 60, height: 60, justifyContent: 'center', alignItems: 'center' }}>
+            <TouchableOpacity activeOpacity={.8} onPress={onHide} style={{ width: 60, height: 60, justifyContent: 'center', alignItems: 'center' }}>
                 <Icon name={'menu-open'} size={25} color={colors.zircon} />
             </TouchableOpacity>
 

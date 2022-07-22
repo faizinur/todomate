@@ -15,6 +15,10 @@ export default {
         shark: '#202226',
         shipGray: '#3D3E49',
         zircon: '#F3F6FF',
+        azureRadiance: '#3e80ff',
+        hotMagenta: '#ff3ee6',
+        deepskyblue: '#3ecdff',
+        pigeonPost: '#bac5e9',
         valencia: '#E24C4B',
         caribbeanGreen: '#09DB93',
         // sticky notes

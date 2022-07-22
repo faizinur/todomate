@@ -3,7 +3,7 @@ import React, { memo, useCallback, useState, useRef } from 'react'
 import { log, CONSTANT } from '@Utils'
 import { useTheme } from 'react-native-paper'
 import Animated, { useAnimatedStyle, withSpring, withTiming } from 'react-native-reanimated';
-import { Activity, Setting, Connect, Notification, SideListMenu } from '@Templates'
+import { Activity, Setting, Connect, Notification, SideMenu } from '@Templates'
 import { PagerView } from 'react-native-pager-view';
 import AwesomeAlert from 'react-native-awesome-alerts';
 
@@ -28,7 +28,7 @@ export default memo(props => {
     }))
     const _onHide = useCallback(() => setIsMenuOpen(prevState => !prevState), []);
     const _onClickLogout = useCallback(() => setIsAlertOpen(prevState => !prevState), []);
-    const _listMenuPress = index => {
+    const _listPress = index => {
         if (index == 4) {
             _onClickLogout()
             return false;
@@ -38,7 +38,7 @@ export default memo(props => {
     return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
             <StatusBar backgroundColor={isMenuOpen ? colors.shark : colors.zircon} barStyle={isMenuOpen ? 'light-content' : 'dark-content'} />
-            <SideListMenu {...props} listMenuPress={_listMenuPress} onHideMenu={_onHide} />
+            <SideMenu {...props} listPress={_listPress} onHide={_onHide} />
             <AwesomeAlert
                 useNativeDriver={true}
                 show={isAlertOpen}
