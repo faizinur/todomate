@@ -17,7 +17,7 @@ export default ({ navigation: { replace } }) => {
         <PageWrapper>
             <ImageBackground
                 source={{ uri: `https://images.unsplash.com/photo-1489641024260-20e5cb3ee4aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1633&q=80` }}
-                style={{ height: height - StatusBar.currentHeight, width, backgroundColor: colors.zircon, }}
+                style={{ height, width, backgroundColor: colors.zircon, }}
                 resizeMethod={'scale'}
                 resizeMode={'cover'}>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-start', paddingHorizontal: '5%' }}>

@@ -26,8 +26,11 @@ export default ({ onHide, listPress, showProfile }) => {
 
     return (
         <View style={{ flex: 1, backgroundColor: colors.shark }}>
-            <View style={{ marginHorizontal: '4%', marginVertical: 3, width: 30, height: 30, justifyContent: 'center', alignItems: 'center' }}>
-                <BtnMenu onPress={onHide} backgroundColor={colors.zircon} />
+            <View style={{ height: 60, width: '100%', justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+                <View style={{ width: 60, height: 60, justifyContent: 'center', alignItems: 'center' }}>
+                    <BtnMenu onPress={onHide} backgroundColor={colors.zircon} />
+                </View>
+                <View style={{ flexGrow: 1 }} />
             </View>
             <View style={{ padding: '5%', flex: 1 }}>
                 <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: 20, width: '70%' }}>
