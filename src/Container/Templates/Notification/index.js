@@ -11,7 +11,7 @@ export default ({ onHideMenu }) => {
     return (<>
         <Navbar leftPress={onHideMenu} />
         <View style={{ flex: 1, paddingHorizontal: '5%', backgroundColor: colors.zircon }}>
-            <MyText >Hai, Setting 123</MyText>
+            <MyText >Hai, Notification</MyText>
         </View>
     </>)
 }

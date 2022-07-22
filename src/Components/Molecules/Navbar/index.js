@@ -17,12 +17,12 @@ export default memo(({ leftPress, title = '' }) => {
                 <MyText center bold>{title}</MyText>
             </View>
             <View style={{ width: 60, height: 60, justifyContent: 'center', alignItems: 'center' }}>
-                <TouchableOpacity activeOpacity={.9}>
+                {/* <TouchableOpacity activeOpacity={.9}>
                     <Icon name={'bell'} size={25} color={colors.shark} />
                     <View style={{ position: 'absolute', top: 0, left: 10, height: 14, width: 14, borderRadius: 7, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.valencia }}>
                         <MyText xSmall center bold color={colors.zircon}>1</MyText>
                     </View>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
         </View>
     )

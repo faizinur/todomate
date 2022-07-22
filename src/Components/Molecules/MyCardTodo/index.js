@@ -14,22 +14,22 @@ export default memo(props => {
             <View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <MyText large bold color={colors.shipGray}>{props.title}</MyText>
-                    <MyText color={`${colors.valencia}cc`}>{props.priority}</MyText>
+                    <MyText opacity={.8} color={colors.valencia}>{props.priority}</MyText>
                 </View>
-                <MyText small color={`${colors.shipGray}bb`} numberOfLines={4}>{`\n`}   while nothing, doing something {`\n\n`}</MyText>
+                <MyText small opacity={.7} color={colors.shipGray} numberOfLines={4}>{`\n`}   while nothing, doing something {`\n\n`}</MyText>
             </View>
 
             <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
                 <View>
-                    <MyText xSmall color={`${colors.shipGray}aa`} style={{ marginVertical: 2 }}><Icon name={"clock-outline"} /> {moment(props.tanggal).format('YYYY-MM-DD hh:mm:ss')}</MyText>
-                    <MyText xSmall color={`${colors.shipGray}aa`} style={{ marginVertical: 2 }}><Icon name={"account-group"} /> 2</MyText>
+                    <MyText xSmall opacity={.65} color={colors.shipGray} style={{ marginVertical: 2 }}><Icon name={"clock-outline"} /> {moment(props.tanggal).format('YYYY-MM-DD hh:mm:ss')}</MyText>
+                    <MyText xSmall opacity={.65} color={colors.shipGray} style={{ marginVertical: 2 }}><Icon name={"account-group"} /> 2</MyText>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: 60 }}>
                     <TouchableOpacity activeOpacity={.7} onPress={props.onEdit}>
-                        <Icon name={"pencil-outline"} size={20} color={`${colors.shipGray}aa`} />
+                        <Icon name={"pencil-outline"} size={20} opacity={.65} color={colors.shipGray} />
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={.7} onPress={props.onDone}>
-                        <Icon name={"check"} size={20} color={`${colors.shipGray}aa`} />
+                        <Icon name={"check"} size={20} opacity={.65} color={colors.shipGray} />
                     </TouchableOpacity>
                 </View>
             </View>

@@ -13,7 +13,7 @@ export default ({ onHideMenu }) => {
     const { height, width } = Dimensions.get('window')
     // todos
     const [todoType, setTodoType] = useState('AWATING');
-    const todosType = [{ title: 'Permintaan', id: 0, status: 'AWATING' }, { title: 'Mendatang', id: 1, status: 'APPROVED' }, { title: 'Selesai', id: 2, status: 'DONE' }];
+    const todosType = [{ title: 'Permintaan', id: 0, status: 'AWATING' }, { title: 'Berjalan', id: 1, status: 'APPROVED' }, { title: 'Selesai', id: 2, status: 'DONE' }];
     const renderTodos = ({ item: { title, id, status } }) => <MyChip text={title} value={status == todoType} onPress={() => _onPressTodosType(status)} />
     const _onPressTodosType = useCallback(setTodoType, [todoType]);
 
@@ -67,11 +67,11 @@ export default ({ onHideMenu }) => {
     }
 
     return (<>
-        <Navbar leftPress={onHideMenu} title={'Home'} />
+        <Navbar leftPress={onHideMenu} />
         <View style={{ width: '100%', height: '100%', paddingHorizontal: '5%', backgroundColor: colors.zircon }}>
             <View>
-                <MyText >Hai, user</MyText>
-                <MyText large bold>Pembaharuan hari ini! {`\n`}</MyText>
+                <MyText opacity={.7} color={colors.shark}>Hey, ketemu lagi nih!</MyText>
+                <MyText xLarge bold>Pembaharuan hari ini! {`\n`}</MyText>
                 <FlatList
                     contentContainerStyle={{ height: 30, width: '100%' }}
                     data={todosType}
@@ -92,7 +92,7 @@ export default ({ onHideMenu }) => {
                     <View style={{ backgroundColor: colors.zircon, padding: 2, borderRadius: 5 }}>
                         <Icon name={'plus'} size={15} color={colors.shark} />
                     </View>
-                    <MyText color={colors.zircon}>Add Todo</MyText>
+                    <MyText color={colors.zircon}>Add Activity</MyText>
                 </TouchableOpacity>
             </LinearGradient>
         </View>
