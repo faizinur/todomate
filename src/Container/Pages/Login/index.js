@@ -1,4 +1,4 @@
-import { View, Dimensions, ImageBackground, StatusBar } from 'react-native'
+import { View, Dimensions, ImageBackground, StatusBar, StyleSheet } from 'react-native'
 import React, { useEffect } from 'react'
 import { log } from '@Utils'
 import { useTheme, TextInput, Button } from 'react-native-paper';
@@ -15,15 +15,17 @@ export default ({ navigation: { replace } }) => {
     }, [])
     return (
         <PageWrapper>
+            <StatusBar hidden={true} />
             <ImageBackground
                 source={{ uri: `https://images.unsplash.com/photo-1489641024260-20e5cb3ee4aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1633&q=80` }}
                 style={{ height, width, backgroundColor: colors.zircon, }}
                 resizeMethod={'scale'}
                 resizeMode={'cover'}>
+                <View style={{ ...StyleSheet.absoluteFill, backgroundColor: colors.shark, opacity: .3 }} />
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-start', paddingHorizontal: '5%' }}>
-                    <MyText xLarge color={colors.shark} opacity={.8} numberOfLines={3}>Bring wacana to reality{`\n\n`}<MyText small color={colors.shark} opacity={.8}>wake up early dude!</MyText></MyText>
+                    <MyText fontSize={45} bold color={colors.white} opacity={.8} numberOfLines={6}>Bring wacana to reality{`\n\n`}<MyText large color={colors.white} opacity={.8}>wake up early, move your body, just make it!</MyText></MyText>
                 </View>
-                <View style={{ flex: 1, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: colors.zircon, paddingHorizontal: '5%', paddingTop: '5%', paddingBottom: '2%' }}>
+                <View style={{ flex: .6, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: colors.zircon, paddingHorizontal: '5%', padding: '5%' }}>
                     <MyText xLarge color={colors.shark}>Login</MyText>
                     <View style={{ flex: 1, padding: '2%' }}>
                         <TextInput

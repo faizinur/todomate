@@ -6,13 +6,14 @@ import Animated, { useAnimatedStyle, withSpring, withTiming } from 'react-native
 import { Activity, Setting, Connect, Notification, Profile, SideMenu } from '@Templates'
 import { PagerView } from 'react-native-pager-view';
 import AwesomeAlert from 'react-native-awesome-alerts';
-
+import { useSwipe } from '@CustomHooks';
 
 export default memo(props => {
     const refPagerView = useRef(<PagerView />);
     const { width, height } = Dimensions.get('window')
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isAlertOpen, setIsAlertOpen] = useState(false)
+    const [activePage, setActivePage] = useState(0)
     const { colors } = useTheme();
     const pageSizeStyle = useAnimatedStyle(() => ({
         height: withSpring(isMenuOpen ? (height * .8) : height, CONSTANT.SPRING_CONFIG),
@@ -33,15 +34,41 @@ export default memo(props => {
             _onClickLogout()
             return false;
         }
-        Promise.all([refPagerView.current.setPageWithoutAnimation(index), _onHide()])
+        Promise.all([refPagerView.current.setPageWithoutAnimation(index), _onHide(), setActivePage(index)])
     }
-    const _showProfile = () => {
-        Promise.all([refPagerView.current.setPageWithoutAnimation(4), _onHide()])
+    const _showProfile = (index) => {
+        Promise.all([refPagerView.current.setPageWithoutAnimation(index), _onHide(), setActivePage(index)])
     }
+    const { onTouchStart, onTouchEnd } = useSwipe(null, _onHide)
     return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
             <StatusBar hidden={false} backgroundColor={isMenuOpen ? colors.shark : colors.zircon} barStyle={isMenuOpen ? 'light-content' : 'dark-content'} />
-            <SideMenu {...props} listPress={_listPress} onHide={_onHide} showProfile={_showProfile} />
+            <SideMenu {...props} listPress={_listPress} onHide={_onHide} showProfile={_showProfile} activePage={activePage} />
+
+            <Animated.View style={[pageSizeStyle, {
+                position: 'absolute',
+                alignSelf: 'center',
+                backgroundColor: colors.zircon,
+                shadowColor: colors.alabaster,
+                shadowOffset: { width: 0, height: 3, },
+                shadowOpacity: 0.27,
+                shadowRadius: 4.65,
+                elevation: 6,
+            }]} pointerEvents={isMenuOpen ? 'none' : 'auto'}>
+                <PagerView
+                    ref={refPagerView}
+                    style={{ flex: 1 }}
+                    initialPage={0}
+                    scrollEnabled={false}>
+                    <View key={0} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Activity {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
+                    <View key={1} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Connect  {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
+                    <View key={2} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Notification {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
+                    <View key={3} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Setting {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
+                    <View key={4} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Profile {...props} onHideMenu={_onHide} /></View>
+                </PagerView>
+                {isMenuOpen && <Animated.View style={[pageOverlayStyle, StyleSheet.absoluteFill]} />}
+            </Animated.View>
+
             <AwesomeAlert
                 useNativeDriver={true}
                 show={isAlertOpen}
@@ -62,25 +89,6 @@ export default memo(props => {
                 cancelButtonTextStyle={{ fontFamily: 'ReadexProRegular', fontSize: 12, color: `${colors.shipGray}88`, fontWeight: '600' }}
                 confirmButtonTextStyle={{ fontFamily: 'ReadexProRegular', fontSize: 12, color: colors.caribbeanGreen, fontWeight: '600' }}
             />
-
-
-            <Animated.View style={[pageSizeStyle, {
-                position: 'absolute', alignSelf: 'center', backgroundColor: colors.zircon,
-                shadowColor: colors.alabaster, shadowOffset: { width: 0, height: 3, }, shadowOpacity: 0.27, shadowRadius: 4.65, elevation: 6,
-            }]} pointerEvents={isMenuOpen ? 'none' : 'auto'}>
-                <PagerView
-                    ref={refPagerView}
-                    style={{ flex: 1 }}
-                    initialPage={0}
-                    scrollEnabled={false}>
-                    <View key={0}><Activity {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
-                    <View key={1}><Connect  {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
-                    <View key={2}><Notification {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
-                    <View key={3}><Setting {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
-                    <View key={4}><Profile {...props} onHideMenu={_onHide} /></View>
-                </PagerView>
-                {isMenuOpen && <Animated.View style={[pageOverlayStyle, StyleSheet.absoluteFill]} />}
-            </Animated.View>
         </View>
     )
 })
