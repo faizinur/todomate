@@ -1,5 +1,5 @@
-import { View } from 'react-native'
-import React, { useCallback, useState } from 'react'
+import { View, Dimensions } from 'react-native'
+import React, { useEffect } from 'react'
 import { useTheme } from 'react-native-paper';
 import { Navbar } from '@Molecules';
 import { MyText } from '@Atoms';
@@ -8,10 +8,20 @@ import { log } from '@Utils'
 
 export default ({ onHideMenu }) => {
     const { colors } = useTheme();
-    return (<>
-        <Navbar leftPress={onHideMenu} />
-        <View style={{ flex: 1, paddingHorizontal: '5%', backgroundColor: colors.zircon }}>
-            <MyText >Hai, Notification</MyText>
+    const { height, width } = Dimensions.get('window')
+    useEffect(() => {
+        log('Mount Notification')
+        return () => {
+            log('Unmount Notification')
+        }
+    }, [])
+    return (
+        <View style={{ width, height }}>
+            <Navbar leftPress={onHideMenu} />
+            <View style={{ flex: 1, paddingHorizontal: '5%' }}>
+                <MyText opacity={.7} color={colors.shark}>Hey, ketemu lagi nih!</MyText>
+                <MyText xLarge bold opacity={.8}>Kamu bisa liat Aktivitasmu disini </MyText>
+            </View>
         </View>
-    </>)
+    )
 }

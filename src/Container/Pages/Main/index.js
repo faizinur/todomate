@@ -3,7 +3,7 @@ import React, { memo, useCallback, useState, useRef } from 'react'
 import { log, CONSTANT } from '@Utils'
 import { useTheme } from 'react-native-paper'
 import Animated, { useAnimatedStyle, withSpring, withTiming } from 'react-native-reanimated';
-import { Activity, Setting, Connect, Notification, SideMenu } from '@Templates'
+import { Activity, Setting, Connect, Notification, Profile, SideMenu } from '@Templates'
 import { PagerView } from 'react-native-pager-view';
 import AwesomeAlert from 'react-native-awesome-alerts';
 
@@ -19,7 +19,7 @@ export default memo(props => {
         width: withSpring(isMenuOpen ? (width * .8) : width, CONSTANT.SPRING_CONFIG),
         borderRadius: withTiming(isMenuOpen ? 20 : 0, { duration: 800 }),
         paddingHorizontal: withTiming(isMenuOpen ? '7%' : '0%'),
-        paddingVertical: withTiming(isMenuOpen ? '5%' : '3%'),
+        paddingVertical: withTiming(isMenuOpen ? '5%' : '0%'),
         transform: [{ translateX: withTiming(isMenuOpen ? (width * .7) : 0, { duration: 500 }) }]
     }))
     const pageOverlayStyle = useAnimatedStyle(() => ({
@@ -35,10 +35,13 @@ export default memo(props => {
         }
         Promise.all([refPagerView.current.setPageWithoutAnimation(index), _onHide()])
     }
+    const _showProfile = () => {
+        Promise.all([refPagerView.current.setPageWithoutAnimation(4), _onHide()])
+    }
     return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
-            <StatusBar backgroundColor={isMenuOpen ? colors.shark : colors.zircon} barStyle={isMenuOpen ? 'light-content' : 'dark-content'} />
-            <SideMenu {...props} listPress={_listPress} onHide={_onHide} />
+            <StatusBar hidden={false} backgroundColor={isMenuOpen ? colors.shark : colors.zircon} barStyle={isMenuOpen ? 'light-content' : 'dark-content'} />
+            <SideMenu {...props} listPress={_listPress} onHide={_onHide} showProfile={_showProfile} />
             <AwesomeAlert
                 useNativeDriver={true}
                 show={isAlertOpen}
@@ -74,6 +77,7 @@ export default memo(props => {
                     <View key={1}><Connect  {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
                     <View key={2}><Notification {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
                     <View key={3}><Setting {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
+                    <View key={4}><Profile {...props} onHideMenu={_onHide} /></View>
                 </PagerView>
                 {isMenuOpen && <Animated.View style={[pageOverlayStyle, StyleSheet.absoluteFill]} />}
             </Animated.View>

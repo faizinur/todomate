@@ -8,18 +8,18 @@ import { log } from '@Utils'
 
 export default ({ onHideMenu }) => {
     const { colors } = useTheme();
-    const { height, width } = Dimensions.get('window')
+    const { height, width } = Dimensions.get('window');
     useEffect(() => {
-        log('Mount Connect')
+        log('Mount Profile')
         return () => {
-            log('Unmount Connect')
+            log('Unmount Profile')
         }
     }, [])
     return (
         <View style={{ width, height }}>
             <Navbar leftPress={onHideMenu} />
             <View style={{ flex: 1, paddingHorizontal: '5%' }}>
-                <MyText opacity={.7} color={colors.shark}>Hey, ketemu lagi nih!</MyText>
+                <MyText opacity={.7} color={colors.shark}>Hey, ketemu lagi nih! profile</MyText>
                 <MyText xLarge bold opacity={.8}>Kamu bisa liat Aktivitasmu disini </MyText>
             </View>
         </View>
