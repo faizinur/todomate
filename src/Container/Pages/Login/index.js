@@ -21,15 +21,38 @@ export default ({ navigation: { replace } }) => {
                 resizeMethod={'scale'}
                 resizeMode={'cover'}>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-start', paddingHorizontal: '5%' }}>
-                    <MyText xLarge color={colors.zircon}>Make your wacana came to reality</MyText>
-                    <MyText small color={colors.zircon}>wake up early dude!</MyText>
+                    <MyText xLarge color={colors.shark} opacity={.8} numberOfLines={3}>Bring wacana to reality{`\n\n`}<MyText small color={colors.shark} opacity={.8}>wake up early dude!</MyText></MyText>
                 </View>
                 <View style={{ flex: 1, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: colors.zircon, paddingHorizontal: '5%', paddingTop: '5%', paddingBottom: '2%' }}>
                     <MyText xLarge color={colors.shark}>Login</MyText>
                     <View style={{ flex: 1, padding: '2%' }}>
-                        <TextInput mode={'outlined'} placeholder={'Nama Pengguna'} style={{ backgroundColor: colors.zircon, marginVertical: 5 }} />
-                        <TextInput mode={'outlined'} placeholder={'password'} style={{ backgroundColor: colors.zircon, marginVertical: 5 }} />
-                        <Button mode="contained" labelStyle={{ color: colors.shark }} style={{ marginTop: '5%', marginBottom: '2%' }} onPress={() => replace('Main')} >
+                        <TextInput
+                            theme={{
+                                fonts: {
+                                    regular: {
+                                        fontFamily: 'ReadexProRegular',
+                                        fontWeight: '600'
+                                    }
+                                }
+                            }}
+                            mode={'outlined'} placeholder={'Nama Pengguna'}
+                            style={{ backgroundColor: colors.zircon, marginVertical: 5 }}
+                        />
+                        <TextInput
+                            theme={{
+                                fonts: {
+                                    regular: {
+                                        fontFamily: 'ReadexProRegular',
+                                        fontWeight: '600'
+                                    }
+                                }
+                            }}
+                            mode={'outlined'} placeholder={'password'}
+                            style={{ backgroundColor: colors.zircon, marginVertical: 5 }}
+                            secureTextEntry
+                        />
+                        <Button
+                            mode="contained" labelStyle={{ color: colors.shark }} style={{ marginTop: '5%', marginBottom: '2%', }} onPress={() => replace('Main')} >
                             Ayo Click aku!
                         </Button>
                         <MyText small color={colors.shark} opacity={.5}>Masih inget Passwordnya gak?</MyText>
