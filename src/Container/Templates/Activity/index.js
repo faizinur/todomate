@@ -106,7 +106,7 @@ export default ({ onHideMenu }) => {
                 <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
                     <View>
                         <MyText opacity={.7} color={colors.shark}>Hey, ketemu lagi nih!</MyText>
-                        <MyText xLarge bold opacity={.8}>Kamu bisa liat Aktivitasmu disini </MyText>
+                        <MyText xLarge bold opacity={.8}>Ayo bersenang-senang</MyText>
                     </View>
                     <TouchableOpacity activeOpacity={.8} style={{ backgroundColor: colors.shark, position: 'absolute', width: 35, height: 35, top: 0, right: 0, justifyContent: 'center', alignItems: 'center', borderRadius: 20 }}>
                         <Icon name={'magnify'} size={15} color={colors.zircon} />
@@ -135,7 +135,7 @@ export default ({ onHideMenu }) => {
                         <View style={{ backgroundColor: colors.zircon, padding: 2, borderRadius: 5 }}>
                             <Icon name={'plus'} size={15} color={colors.shark} />
                         </View>
-                        <MyText color={colors.zircon}>Add Activity</MyText>
+                        <MyText color={colors.zircon}>  Add Activity</MyText>
                     </TouchableOpacity>
                 </LinearGradient>
             </View>

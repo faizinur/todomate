@@ -25,7 +25,7 @@ export default ({ navigation: { replace } }) => {
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-start', paddingHorizontal: '5%' }}>
                     <MyText fontSize={45} bold color={colors.white} opacity={.8} numberOfLines={6}>Bring wacana to reality{`\n\n`}<MyText large color={colors.white} opacity={.8}>wake up early, move your body, just make it!</MyText></MyText>
                 </View>
-                <View style={{ flex: .6, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: colors.zircon, paddingHorizontal: '5%', padding: '5%' }}>
+                <View style={{ flex: .8, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: colors.zircon, paddingHorizontal: '5%', padding: '5%' }}>
                     <MyText xLarge color={colors.shark}>Login</MyText>
                     <View style={{ flex: 1, padding: '2%' }}>
                         <TextInput

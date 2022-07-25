@@ -17,9 +17,10 @@ export default ({ onHide, listPress, showProfile, activePage }) => {
         <>
             {item.title == 'Setting' && <View style={{ height: .3, width: '55%', marginVertical: '5%', marginHorizontal: '5%', backgroundColor: `${colors.zircon}30` }} />}
             <TouchableOpacity activeOpacity={.8} onPress={() => listPress(item.id)}
-                style={{ width: '35%', height: 50, justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row' }}>
-                <Icon name={item.icon} size={16} color={colors.zircon} style={{ marginHorizontal: 10, opacity: (activePage == item.id && activePage < 4) ? 1 : .4 }} />
-                <MyText opacity={(activePage == item.id && activePage < 4) ? 1 : .65} color={colors.zircon}>{item.title}</MyText>
+                style={{ width: '50%', marginVertical: 5, backgroundColor: (activePage == item.id && activePage < 4) ? `${colors.shipGray}55` : 'transparent', borderRadius: 10, height: 40, justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row' }}>
+                {(activePage == item.id && activePage < 4) && <View style={{ height: 25, width: 3, backgroundColor: colors.shipGray, marginLeft: 2, borderRadius: 40 }} />}
+                <Icon name={item.icon} size={16} color={colors.zircon} style={{ marginHorizontal: 10, opacity: .4 }} />
+                <MyText opacity={.65} color={colors.zircon}>{item.title}</MyText>
             </TouchableOpacity>
         </>
     )
@@ -28,7 +29,7 @@ export default ({ onHide, listPress, showProfile, activePage }) => {
         <View style={{ flex: 1, backgroundColor: colors.shark }}>
             <View style={{ height: 60, width: '100%', justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
                 <View style={{ width: 60, height: 60, justifyContent: 'center', alignItems: 'center' }}>
-                    <BtnMenu onPress={onHide} backgroundColor={colors.zircon} />
+                    <BtnMenu onPress={onHide} borderColor={`${colors.zircon}bb`} />
                 </View>
                 <View style={{ flexGrow: 1 }} />
             </View>
@@ -40,7 +41,7 @@ export default ({ onHide, listPress, showProfile, activePage }) => {
                         <MyText xSmall opacity={.65} color={colors.zircon}>Last Login : {moment(new Date).format('DD/MM hh:mm')}</MyText>
                     </View>
                     <TouchableOpacity onPress={() => showProfile(4)} activeOpacity={.8} style={{ height: 30, width: 30, borderRadius: 15, justifyContent: 'center', alignItems: 'center' }}>
-                        <Icon name={'pencil-outline'} size={16} opacity={.65} color={colors.zircon} style={{ marginRight: 10, opacity: (activePage == 4) ? 1 : .65 }} />
+                        <Icon name={'pencil-outline'} size={16} opacity={.65} color={colors.zircon} style={{ marginRight: 10, opacity: .65 }} />
                     </TouchableOpacity>
                 </View>
 

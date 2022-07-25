@@ -8,7 +8,7 @@ export default memo(({ leftPress, title = '', Left = () => <></> }) => {
     return (
         <View style={{ height: 60, width: '100%', justifyContent: 'center', alignItems: 'center', flexDirection: 'row', backgroundColor: colors.zircon }}>
             <View style={{ width: 60, height: 60, justifyContent: 'center', alignItems: 'center' }}>
-                <BtnMenu onPress={leftPress} backgroundColor={colors.shark} />
+                <BtnMenu onPress={leftPress} borderColor={`${colors.shark}bb`} />
             </View>
             <View style={{ flexGrow: 1 }}>
                 <MyText center bold>{title}</MyText>
