@@ -34,7 +34,7 @@ export default ({ onHide, listPress, showProfile, activePage }) => {
                 <View style={{ flexGrow: 1 }} />
             </View>
             <View style={{ padding: '5%', flex: 1 }}>
-                <TouchableOpacity onPress={() => showProfile(9999)} activeOpacity={.8} style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: 20, width: '70%' }}>
+                <TouchableOpacity onPress={() => showProfile()} activeOpacity={.8} style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: 20, width: '70%' }}>
                     <Image source={{ uri: 'https://placekitten.com/640/360' }} style={{ width: 60, height: 60, borderRadius: 30, borderWidth: 1, borderColor: `${colors.zircon}bb`, marginRight: 10 }} />
                     <View>
                         <MyText large bold color={colors.zircon} opacity={.8} style={{ width: '70%' }}>Username Jhon Doe</MyText>

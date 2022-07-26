@@ -36,8 +36,8 @@ export default memo(props => {
         }
         Promise.all([refPagerView.current.setPageWithoutAnimation(index), _onHide(), setActivePage(index)])
     }
-    const _showProfile = (index) => {
-        Promise.all([refPagerView.current.setPageWithoutAnimation(index), _onHide(), setActivePage(index)])
+    const _showProfile = () => {
+        Promise.all([refPagerView.current.setPageWithoutAnimation(4), _onHide(), setActivePage(4)])
     }
     const { onTouchStart, onTouchEnd } = useSwipe(null, _onHide)
     return (
