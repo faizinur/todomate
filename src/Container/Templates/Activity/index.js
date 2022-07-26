@@ -2,7 +2,7 @@ import { View, FlatList, Dimensions, TouchableOpacity } from 'react-native'
 import React, { useCallback, useState, useEffect, useMemo } from 'react'
 import { useTheme } from 'react-native-paper';
 import { Navbar } from '@Molecules';
-import { MyText, MyChip } from '@Atoms';
+import { MyText, MyTabItem } from '@Atoms';
 import { MyCardTodo } from '@Molecules'
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -15,7 +15,7 @@ export default ({ onHideMenu }) => {
     // todos
     const [todoType, setTodoType] = useState('AWATING');
     const todosType = [{ title: 'Permintaan', id: 0, status: 'AWATING' }, { title: 'Berjalan', id: 1, status: 'APPROVED' }, { title: 'Selesai', id: 2, status: 'DONE' }];
-    const renderTodos = ({ item: { title, id, status } }) => <MyChip text={title} value={status == todoType} onPress={() => _onPressTodosType(status)} />
+    const renderTodos = ({ item: { title, id, status } }) => <MyTabItem text={title} value={status == todoType} onPress={() => _onPressTodosType(status)} />
     const _onPressTodosType = useCallback(setTodoType, [todoType]);
 
     // todolist
@@ -116,8 +116,7 @@ export default ({ onHideMenu }) => {
                         keyExtractor={({ id }) => id}
                         renderItem={renderTodos}
                         horizontal
-                        showsHorizontalScrollIndicator={false}
-                    />
+                        showsHorizontalScrollIndicator={false} />
                 </View>
                 <View style={{ flex: 1 }}>
                     <FlatList
@@ -129,11 +128,11 @@ export default ({ onHideMenu }) => {
                     />
                 </View>
                 <LinearGradient colors={['transparent', colors.zircon]} style={{ position: 'absolute', bottom: 0, left: 0, height: 80, width, justifyContent: 'flex-start', alignItems: 'center' }}>
-                    <TouchableOpacity activeOpacity={.9} onPress={_onAddTodo} style={{ width: 150, borderRadius: 30, paddingHorizontal: 20, height: 40, backgroundColor: colors.shark, justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row' }}>
+                    <TouchableOpacity activeOpacity={.9} onPress={_onAddTodo} style={{ width: 120, borderRadius: 30, paddingHorizontal: 20, height: 40, backgroundColor: colors.shark, justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row' }}>
                         <View style={{ backgroundColor: colors.zircon, padding: 2, borderRadius: 5 }}>
-                            <Icon name={'plus'} size={15} color={colors.shark} />
+                            <Icon name={'plus'} size={11} color={colors.shark} />
                         </View>
-                        <MyText color={colors.zircon}>  Add Activity</MyText>
+                        <MyText small color={colors.zircon}>Activity</MyText>
                     </TouchableOpacity>
                 </LinearGradient>
             </View >

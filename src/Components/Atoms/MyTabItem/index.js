@@ -8,9 +8,12 @@ import Animated, {
 } from 'react-native-reanimated';
 export default memo(props => {
     const { colors } = useTheme();
-    const textColor = props.value ? colors.shark : `${colors.shipGray}cc`;
+    const textColor = props.value ? colors.shark : `${colors.shipGray}99`;
     const textStyle = useAnimatedStyle(() => ({
-        transform: [{ translateY: withTiming(props.value ? -7 : 0, { duration: 250 }) }]
+        transform: [
+            { translateY: withTiming(props.value ? -7 : 0, { duration: 250 }) },
+            { scale: withTiming(props.value ? 1 : .9, { duration: 250 }) }
+        ]
     }))
     const indicatorStyle = useAnimatedStyle(() => ({
         bottom: withTiming(props.value ? 5 : -8, { duration: 250 }),
