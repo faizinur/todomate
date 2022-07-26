@@ -18,12 +18,12 @@ export default ({ navigation: { replace } }) => {
             <StatusBar hidden={true} />
             <ImageBackground
                 source={{ uri: `https://images.unsplash.com/photo-1489641024260-20e5cb3ee4aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1633&q=80` }}
-                style={{ height, width, backgroundColor: colors.zircon, }}
+                style={{ height, width, backgroundColor: colors.zircon }}
                 resizeMethod={'scale'}
+                imageStyle={{ opacity: .8, backgroundColor: colors.shark }}
                 resizeMode={'cover'}>
-                <View style={{ ...StyleSheet.absoluteFill, backgroundColor: colors.shark, opacity: .3 }} />
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-start', paddingHorizontal: '5%' }}>
-                    <MyText fontSize={45} bold color={colors.white} opacity={.8} numberOfLines={6}>Bring wacana to reality{`\n\n`}<MyText large color={colors.white} opacity={.8}>wake up early, move your body, just make it!</MyText></MyText>
+                    <MyText fontSize={45} bold color={colors.shark} opacity={.8} numberOfLines={6}>Bring wacana to reality{`\n\n`}<MyText large color={colors.shark} opacity={.8}>wake up early, move your body, just make it!</MyText></MyText>
                 </View>
                 <View style={{ flex: .8, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: colors.zircon, paddingHorizontal: '5%', padding: '5%' }}>
                     <MyText xLarge color={colors.shark}>Login</MyText>

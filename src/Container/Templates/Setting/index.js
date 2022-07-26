@@ -19,8 +19,7 @@ export default ({ onHideMenu }) => {
         <View style={{ width, height }}>
             <Navbar leftPress={onHideMenu} />
             <View style={{ flex: 1, paddingHorizontal: '5%' }}>
-                <MyText opacity={.7} color={colors.shark}>Hey, ketemu lagi nih!</MyText>
-                <MyText xLarge bold opacity={.8}>Kamu bisa liat Aktivitasmu disini </MyText>
+                <MyText xLarge bold opacity={.8}>Pengaturan disini </MyText>
             </View>
         </View>
     )

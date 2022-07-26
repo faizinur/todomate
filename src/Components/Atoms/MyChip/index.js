@@ -1,19 +1,29 @@
 import { View, TouchableOpacity } from 'react-native'
 import React, { memo } from 'react'
 import { useTheme } from 'react-native-paper';
-import { MyText } from '@Atoms'
+import { MyText } from '@Atoms';
+import Animated, {
+    useAnimatedStyle,
+    withTiming,
+} from 'react-native-reanimated';
 export default memo(props => {
     const { colors } = useTheme();
-    const enabled = props.value || true;
-    const textColor = props.value ? colors.shark : colors.shipGrey;
-    const borderColor = 'transparent';
-    return <TouchableOpacity
-        activeOpacity={.8}
-        onPress={props?.onPress}
-        enabled={enabled}
-        style={{ backgroundColor: 'transparent', borderColor: borderColor, borderWidth: .3, paddingHorizontal: 10, borderRadius: 50, minWidth: 100, height: 30, justifyContent: 'center', alignItems: 'center', marginRight: 5 }}>
-        <MyText small center color={textColor}>{props.text}</MyText>
-        {props.value && <View style={{ width: 5, height: 5, borderRadius: 3, backgroundColor: colors.shark, marginVertical: 3 }} />}
+    const textColor = props.value ? colors.shark : `${colors.shipGray}cc`;
+    const textStyle = useAnimatedStyle(() => ({
+        transform: [{ translateY: withTiming(props.value ? -7 : 0, { duration: 250 }) }]
+    }))
+    const indicatorStyle = useAnimatedStyle(() => ({
+        bottom: withTiming(props.value ? 5 : -8, { duration: 250 }),
+        backgroundColor: withTiming(props.value ? colors.shipGray : 'transparent', { duration: 250 }),
+    }))
+
+    return <TouchableOpacity activeOpacity={.8} onPress={props?.onPress}>
+        <View style={{ height: 30, minWidth: 100, marginHorizontal: 5, justifyContent: 'center' }}>
+            <Animated.View style={textStyle}>
+                <MyText small center color={textColor}>{props.text}</MyText>
+            </Animated.View>
+            <Animated.View style={[indicatorStyle, { position: 'absolute', width: 4, height: 4, borderRadius: 3, backgroundColor: colors.shark, marginVertical: 3, alignSelf: 'center' }]} />
+        </View>
     </TouchableOpacity>
 })
 

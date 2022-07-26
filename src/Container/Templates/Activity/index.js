@@ -1,5 +1,5 @@
 import { View, FlatList, Dimensions, TouchableOpacity } from 'react-native'
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useState, useEffect, useMemo } from 'react'
 import { useTheme } from 'react-native-paper';
 import { Navbar } from '@Molecules';
 import { MyText, MyChip } from '@Atoms';
@@ -78,13 +78,11 @@ export default ({ onHideMenu }) => {
             priority: 'harus',
         },
     ];
-    const renderListTodo = ({ item }) => <MyCardTodo {...item} onEdit={() => _onEditTodoCard(item)} onDone={() => _onDoneTodo(item)} />
-    const _onEditTodoCard = useCallback(todo => {
-        log(todo)
-    }, [selectedTodo]);
-    const _onDoneTodo = useCallback(todo => {
-        log(todo)
-    }, [selectedTodo]);
+    const renderListTodo = ({ item, index }) => <MyCardTodo index={index} {...item} onEdit={() => _onEditTodoCard(item)} onDone={() => _onDoneTodo(item)} />
+    const _onEditTodoCard = useCallback(log, [selectedTodo]);
+    const _onDoneTodo = useCallback(log, [selectedTodo]);
+
+    const _filteredListTodo = useMemo(() => listTodo.filter(({ status }) => status == todoType), [todoType])
 
     // add TODO
     const _onAddTodo = () => {
@@ -100,17 +98,17 @@ export default ({ onHideMenu }) => {
     return (
         <View style={{ width, height }}>
             <Navbar leftPress={onHideMenu} Left={() =>
-                <MyText small opacity={.5} style={{ marginRight: '5%' }}>{moment(new Date).format('DD MMMM')} <Icon name={'calendar-month-outline'} size={10} color={colors.shark} /></MyText>}
+                <View activeOpacity={.8} style={{ flexDirection: 'row', paddingHorizontal: '5%', minWidth: 60, height: 60, justifyContent: 'center', alignItems: 'center' }}>
+                    <Icon name={'magnify'} size={25} color={colors.shark} />
+                </View>}
             />
-            <View style={{ flex: 1, paddingHorizontal: '5%' }}>
-                <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
+            < View style={{ flex: 1, paddingHorizontal: '5%' }}>
+                <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: 15 }}>
                     <View>
                         <MyText opacity={.7} color={colors.shark}>Hey, ketemu lagi nih!</MyText>
-                        <MyText xLarge bold opacity={.8}>Ayo bersenang-senang</MyText>
+                        <MyText xLarge bold opacity={.8}>Wujudkan wacanamu.</MyText>
                     </View>
-                    <TouchableOpacity activeOpacity={.8} style={{ backgroundColor: colors.shark, position: 'absolute', width: 35, height: 35, top: 0, right: 0, justifyContent: 'center', alignItems: 'center', borderRadius: 20 }}>
-                        <Icon name={'magnify'} size={15} color={colors.zircon} />
-                    </TouchableOpacity>
+                    <MyText small opacity={.5}>{moment(new Date).format('DD MMMM')} <Icon name={'calendar-month-outline'} size={10} color={colors.shark} /></MyText>
                 </View>
                 <View style={{ height: 30, width: '100%', marginVertical: 10, justifyContent: 'center', alignItems: 'center' }}>
                     <FlatList
@@ -123,7 +121,7 @@ export default ({ onHideMenu }) => {
                 </View>
                 <View style={{ flex: 1 }}>
                     <FlatList
-                        data={listTodo.filter(({ status }) => status == todoType)}
+                        data={_filteredListTodo}
                         keyExtractor={({ id, tanggal }) => `${id}-${tanggal}`}
                         renderItem={renderListTodo}
                         showsVerticalScrollIndicator={false}
@@ -138,7 +136,7 @@ export default ({ onHideMenu }) => {
                         <MyText color={colors.zircon}>  Add Activity</MyText>
                     </TouchableOpacity>
                 </LinearGradient>
-            </View>
-        </View>
+            </View >
+        </View >
     )
 }

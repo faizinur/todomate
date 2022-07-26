@@ -5,7 +5,7 @@ import { useTheme } from 'react-native-paper';
 const Splash = ({ navigation: { replace } }) => {
     const { colors } = useTheme();
     useEffect(() => {
-        setTimeout(() => replace('Login'), 1000)
+        setTimeout(() => replace('Main'), 1000)
         return () => {
 
         }

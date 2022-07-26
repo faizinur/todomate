@@ -34,16 +34,16 @@ export default ({ onHide, listPress, showProfile, activePage }) => {
                 <View style={{ flexGrow: 1 }} />
             </View>
             <View style={{ padding: '5%', flex: 1 }}>
-                <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: 20, width: '70%' }}>
+                <TouchableOpacity onPress={() => showProfile(9999)} activeOpacity={.8} style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: 20, width: '70%' }}>
                     <Image source={{ uri: 'https://placekitten.com/640/360' }} style={{ width: 60, height: 60, borderRadius: 30, borderWidth: 1, borderColor: `${colors.zircon}bb`, marginRight: 10 }} />
                     <View>
                         <MyText large bold color={colors.zircon} opacity={.8} style={{ width: '70%' }}>Username Jhon Doe</MyText>
                         <MyText xSmall opacity={.65} color={colors.zircon}>Last Login : {moment(new Date).format('DD/MM hh:mm')}</MyText>
                     </View>
-                    <TouchableOpacity onPress={() => showProfile(4)} activeOpacity={.8} style={{ height: 30, width: 30, borderRadius: 15, justifyContent: 'center', alignItems: 'center' }}>
-                        <Icon name={'pencil-outline'} size={16} opacity={.65} color={colors.zircon} style={{ marginRight: 10, opacity: .65 }} />
-                    </TouchableOpacity>
-                </View>
+                    {/* <TouchableOpacity onPress={() => showProfile(4)} activeOpacity={.8} style={{ height: 30, width: 30, borderRadius: 15, justifyContent: 'center', alignItems: 'center' }}> */}
+                    <Icon name={'pencil-outline'} size={16} opacity={.65} color={colors.zircon} style={{ marginRight: 10, opacity: .65 }} />
+                    {/* </TouchableOpacity> */}
+                </TouchableOpacity>
 
                 <FlatList
                     contentContainerStyle={{ marginVertical: 20 }}

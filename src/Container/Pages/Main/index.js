@@ -60,11 +60,11 @@ export default memo(props => {
                     style={{ flex: 1 }}
                     initialPage={0}
                     scrollEnabled={false}>
-                    <View key={0} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Activity {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
-                    <View key={1} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Connect  {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
-                    <View key={2} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Notification {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
-                    <View key={3} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Setting {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
-                    <View key={4} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Profile {...props} onHideMenu={_onHide} /></View>
+                    <View style={{ paddingTop: 12 }} key={0} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Activity {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
+                    <View style={{ paddingTop: 12 }} key={1} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Connect  {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
+                    <View style={{ paddingTop: 12 }} key={2} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Notification {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
+                    <View style={{ paddingTop: 12 }} key={3} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Setting {...props} onHideMenu={_onHide} menuOpen={isMenuOpen} /></View>
+                    <View style={{ paddingTop: 12 }} key={4} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}><Profile {...props} onHideMenu={_onHide} /></View>
                 </PagerView>
                 {isMenuOpen && <Animated.View style={[pageOverlayStyle, StyleSheet.absoluteFill]} />}
             </Animated.View>

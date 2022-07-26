@@ -13,9 +13,7 @@ export default memo(({ leftPress, title = '', Left = () => <></> }) => {
             <View style={{ flexGrow: 1 }}>
                 <MyText center bold>{title}</MyText>
             </View>
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                {<Left />}
-            </View>
+            {<Left />}
         </View>
     )
 });

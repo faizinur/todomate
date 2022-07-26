@@ -22,6 +22,8 @@ target 'todos' do
 
   pod 'react-native-pager-view', :path => '../node_modules/react-native-pager-view'
 
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+
   target 'todosTests' do
     inherit! :complete
     # Pods for testing
