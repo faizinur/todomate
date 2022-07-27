@@ -4,6 +4,7 @@ import Notification from './Notification';
 import Profile from './Profile';
 import Setting from './Setting';
 import SideMenu from './SideMenu';
+import OnBoarding from './OnBoarding';
 export {
     Connect,
     Notification,
@@ -11,4 +12,5 @@ export {
     SideMenu,
     Activity,
     Profile,
+    OnBoarding,
 }

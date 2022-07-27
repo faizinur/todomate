@@ -21,10 +21,10 @@ export default ({ navigation: { replace } }) => {
     }, [])
     return (
         <PageWrapper>
-            <StatusBar backgroundColor={`${colors.shark}de`} barStyle={'light-content'} />
+            <StatusBar translucent backgroundColor={`transparent`} barStyle={'light-content'} />
             <ImageBackground
                 source={{ uri: `https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&w=688&q=1250` }}
-                style={{ height: height - StatusBar.currentHeight, width, backgroundColor: colors.zircon }}
+                style={{ height, width, backgroundColor: colors.zircon }}
                 resizeMethod={'scale'}
                 imageStyle={{ opacity: .9, backgroundColor: colors.shark }}
                 resizeMode={'cover'}>
@@ -88,7 +88,7 @@ export default ({ navigation: { replace } }) => {
                                         Punten
                                     </Button>
                                 </View>
-                                <MyText small color={colors.zircon} opacity={.9} style={{ marginVertical: 15 }}>Gak bisa masuk?
+                                <MyText center small color={colors.zircon} opacity={.9} style={{ marginVertical: 15 }}>Gak bisa masuk?
                                     <MyText onPress={() => alert('Kasian deh')} small bold color={colors.caribbeanGreen}> mending kesini deh.</MyText>
                                 </MyText>
                             </View>
@@ -191,6 +191,3 @@ export default ({ navigation: { replace } }) => {
 
     )
 }
-
-// source={{ uri: `https://images.unsplash.com/photo-1489641024260-20e5cb3ee4aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1633&q=80` }}
-// source={{ uri: `https://images.unsplash.com/photo-1468434453985-b1ca3b555f00?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&w=1170&q=1250` }

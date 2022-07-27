@@ -35,7 +35,11 @@ export default {
         perfume: '#E0C3FC',
         perano: '#A6C1EE',
         frenchLilac: '#FDCBF1',
-        //pastel color
+        //https://dribbble.com/shots/16758734-Onboarding-Miongi-Apps-Halloween-Edition
+        lavenderRose: "#f990dc",
+        fuchsiaBlue: "#855fce",
+        jaffa: "#ff9647",
+        //https://dribbble.com/shots/16758734-Onboarding-Miongi-Apps-Halloween-Edition
         text: 'black',
     },
     fonts: {

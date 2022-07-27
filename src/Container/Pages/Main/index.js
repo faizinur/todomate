@@ -42,7 +42,7 @@ export default memo(props => {
     const { onTouchStart, onTouchEnd } = useSwipe(null, _onHide)
     return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
-            <StatusBar hidden={false} backgroundColor={isMenuOpen ? colors.shark : colors.zircon} barStyle={isMenuOpen ? 'light-content' : 'dark-content'} />
+            <StatusBar translucent={false} backgroundColor={isMenuOpen ? colors.shark : colors.zircon} barStyle={isMenuOpen ? 'light-content' : 'dark-content'} />
             <SideMenu {...props} listPress={_listPress} onHide={_onHide} showProfile={_showProfile} activePage={activePage} />
 
             <Animated.View style={[pageSizeStyle, {
