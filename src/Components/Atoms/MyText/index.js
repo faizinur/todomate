@@ -15,5 +15,5 @@ export default memo(props => {
     }
     const numberOfLines = 'numberOfLines' in props ? props.numberOfLines : 2;
     const ellipsizeMode = 'ellipsizeMode' in props ? props.ellipsizeMode : 'tail'
-    return <Text style={[textStyles, { ...props?.style }]} numberOfLines={numberOfLines} ellipsizeMode={ellipsizeMode}>{props.children}</Text>
+    return <Text onPress={props?.onPress} style={[textStyles, { ...props?.style }]} numberOfLines={numberOfLines} ellipsizeMode={ellipsizeMode}>{props.children}</Text>
 })

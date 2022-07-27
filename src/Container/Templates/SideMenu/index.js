@@ -13,17 +13,15 @@ export default ({ onHide, listPress, showProfile, activePage }) => {
         { id: 3, title: 'Setting', icon: 'cog-outline' },
         { id: 4, title: 'Logout', icon: 'exit-to-app' },
     ]
-    const renderListMenu = (({ item }) =>
-        <>
-            {item.title == 'Setting' && <View style={{ height: .3, width: '55%', marginVertical: '5%', marginHorizontal: '5%', backgroundColor: `${colors.zircon}30` }} />}
-            <TouchableOpacity activeOpacity={.8} onPress={() => listPress(item.id)}
-                style={{ width: '50%', marginVertical: 5, backgroundColor: (activePage == item.id && activePage < 4) ? `${colors.shipGray}55` : 'transparent', borderRadius: 10, height: 40, justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row' }}>
-                {(activePage == item.id && activePage < 4) && <View style={{ height: 25, width: 3, backgroundColor: colors.shipGray, marginLeft: 2, borderRadius: 40 }} />}
-                <Icon name={item.icon} size={16} color={colors.zircon} style={{ marginHorizontal: 10, opacity: .4 }} />
-                <MyText opacity={.65} color={colors.zircon}>{item.title}</MyText>
-            </TouchableOpacity>
-        </>
-    )
+    const renderListMenu = (({ item }) => <>
+        {item.title == 'Setting' && <View style={{ height: .3, width: '55%', marginVertical: '5%', marginHorizontal: '5%', backgroundColor: `${colors.zircon}30` }} />}
+        <TouchableOpacity activeOpacity={.8} onPress={() => listPress(item.id)}
+            style={{ width: '50%', marginVertical: 5, backgroundColor: (activePage == item.id && activePage < 4) ? `${colors.shipGray}55` : 'transparent', borderRadius: 10, height: 40, justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row' }}>
+            {(activePage == item.id && activePage < 4) && <View style={{ height: 25, width: 3, backgroundColor: colors.shipGray, marginLeft: 2, borderRadius: 40 }} />}
+            <Icon name={item.icon} size={16} color={colors.zircon} style={{ marginHorizontal: 10, opacity: .4 }} />
+            <MyText opacity={.65} color={colors.zircon}>{item.title}</MyText>
+        </TouchableOpacity>
+    </>)
 
     return (
         <View style={{ flex: 1, backgroundColor: colors.shark }}>
@@ -55,4 +53,3 @@ export default ({ onHide, listPress, showProfile, activePage }) => {
         </View >
     )
 }
-

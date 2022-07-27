@@ -2,7 +2,7 @@ import { View, Text, ActivityIndicator } from 'react-native'
 import React, { useEffect } from 'react'
 import { useTheme } from 'react-native-paper';
 
-const Splash = ({ navigation: { replace } }) => {
+export default ({ navigation: { replace } }) => {
     const { colors } = useTheme();
     useEffect(() => {
         setTimeout(() => replace('Main'), 1000)
@@ -17,5 +17,3 @@ const Splash = ({ navigation: { replace } }) => {
         </View>
     )
 }
-
-export default Splash

@@ -24,6 +24,8 @@ target 'todos' do
 
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
 
+  pod 'react-native-blur', :path => '../node_modules/@react-native-community/blur'
+
   target 'todosTests' do
     inherit! :complete
     # Pods for testing
