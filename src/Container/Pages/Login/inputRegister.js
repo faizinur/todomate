@@ -73,5 +73,5 @@ const INPUT_REGISTER_LIST = [
         }
     },
 ];
-const FORM_REGISTER_NAME = 'loginForm';
+const FORM_REGISTER_NAME = 'registerForm';
 export { INPUT_REGISTER_LIST, FORM_REGISTER_NAME }

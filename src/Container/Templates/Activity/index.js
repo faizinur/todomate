@@ -1,17 +1,20 @@
 import { View, FlatList, Dimensions, TouchableOpacity } from 'react-native'
-import React, { useCallback, useState, useEffect, useMemo } from 'react'
+import React, { useCallback, useState, useEffect, useMemo, useRef } from 'react'
 import { useTheme } from 'react-native-paper';
 import { Navbar } from '@Molecules';
-import { MyText, MyTabItem } from '@Atoms';
+import { MyText, MyTabItem, MyModal } from '@Atoms';
 import { MyCardTodo } from '@Molecules'
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { log } from '@Utils'
 import moment from 'moment';
-
+import { Form } from '@Organisms';
+import { FORM_ACTIVITY_NAME, INPUT_ACTIVITY_LIST } from './inputActivity';
 export default ({ onHideMenu }) => {
     const { colors } = useTheme();
     const { height, width } = Dimensions.get('window')
+    const refActivityModal = useRef(<MyModal />)
+    const refActivityForm = useRef(<Form />)
     // todos
     const [todoType, setTodoType] = useState('AWATING');
     const todosType = [{ title: 'Permintaan', id: 0, status: 'AWATING' }, { title: 'Berjalan', id: 1, status: 'APPROVED' }, { title: 'Selesai', id: 2, status: 'DONE' }];
@@ -85,10 +88,15 @@ export default ({ onHideMenu }) => {
     const _filteredListTodo = useMemo(() => listTodo.filter(({ status }) => status == todoType), [todoType])
 
     // add TODO
+    const _submitActivity = (serialized) => {
+        log('_submitActivity', serialized)
+    }
     const _onAddTodo = () => {
-        log('_onAddTodo')
+        // log('_onAddTodo')
+        refActivityModal.current.toggle()
     }
 
+    const _onCloseTodo = () => { refActivityModal.current.toggle() }
     useEffect(() => {
         log('Mount Activity')
         return () => {
@@ -135,7 +143,26 @@ export default ({ onHideMenu }) => {
                         <MyText small color={colors.zircon}>Activity</MyText>
                     </TouchableOpacity>
                 </LinearGradient>
-            </View >
-        </View >
+            </View>
+            <MyModal ref={refActivityModal}>
+                <View style={{ backgroundColor: `${colors.shark}22`, alignSelf: 'center', width: 30, height: 5, borderRadius: 5 }} />
+                <View style={{ width: '100%', height: 56, flexDirection: 'row' }}>
+                    <TouchableOpacity activeOpacity={.8} onPress={_onCloseTodo} style={{ width: 60, height: 56, justifyContent: 'center', alignItems: 'flex-start' }}>
+                        <Icon name={'chevron-left'} size={30} color={colors.shark} />
+                    </TouchableOpacity>
+                    <View style={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <MyText color={colors.shark} size={20} bold>ceritakan sebuah wacana</MyText>
+                    </View>
+                    <View style={{ width: 60, height: 56 }} />
+                </View>
+                <Form
+                    ref={refActivityForm}
+                    formname={FORM_ACTIVITY_NAME}
+                    inputList={INPUT_ACTIVITY_LIST}
+                    onFormSubmit={_submitActivity}
+                    submitLabel={'wacanakan'}
+                />
+            </MyModal>
+        </View>
     )
 }

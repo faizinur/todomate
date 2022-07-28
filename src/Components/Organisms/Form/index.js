@@ -85,7 +85,54 @@ export default forwardRef(({ formname = 'myForm', inputList = [], defaultValue =
                                 onFocus={name => focusedInput = name}
                                 {...inputProps} />
                             || type == 'avatar' &&
-                            <InputPallete.MyAvatar />
+                            <InputPallete.MyAvatar
+                                loading={loading}
+                                id={id}
+                                register={register(`${FORM_NAME}.${name}.value`)}
+                                name={name}
+                                onBlur={onBlur}
+                                onChangeText={onChange}
+                                value={value}
+                                error={name in errors}
+                                errorText={errors[name]?.message}
+                                onResetField={_onResetField}
+                                onFocus={name => focusedInput = name}
+                                config={{ ...config }}
+                                {...inputProps} />
+                            || type == 'colorList' &&
+                            <InputPallete.MyColorList
+                                loading={loading}
+                                id={id}
+                                register={register(`${FORM_NAME}.${name}.value`)}
+                                name={name}
+                                onBlur={onBlur}
+                                onChangeText={onChange}
+                                value={value}
+                                error={name in errors}
+                                errorText={errors[name]?.message}
+                                onResetField={_onResetField}
+                                onFocus={name => focusedInput = name}
+                                onselectedColor={color => _onResetField(name, color)}
+                                config={{ ...config }}
+                                {...inputProps}
+                            />
+                            || type == 'chipTask' &&
+                            <InputPallete.MyTaskType
+                                loading={loading}
+                                id={id}
+                                register={register(`${FORM_NAME}.${name}.value`)}
+                                name={name}
+                                onBlur={onBlur}
+                                onChangeText={onChange}
+                                value={value}
+                                error={name in errors}
+                                errorText={errors[name]?.message}
+                                onResetField={_onResetField}
+                                onFocus={name => focusedInput = name}
+                                onselectedChips={color => _onResetField(name, color)}
+                                config={{ ...config }}
+                                {...inputProps}
+                            />
                             || <MyText>input undefined {type}</MyText>
                         )}
                     />

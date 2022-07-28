@@ -20,7 +20,7 @@ export default ({ navigation: { replace } }) => {
             <StatusBar translucent backgroundColor={`transparent`} barStyle={'light-content'} />
             {onBoardingPassed && <ImageBackground
                 source={{ uri: `https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&w=688&q=1250` }}
-                style={{ height: height - StatusBar.currentHeight, width, backgroundColor: colors.zircon, justifyContent: 'center', alignItems: 'center' }}
+                style={{ height, width, backgroundColor: colors.zircon, justifyContent: 'center', alignItems: 'center' }}
                 resizeMethod={'scale'}
                 imageStyle={{ opacity: 1, backgroundColor: colors.shark }}
                 resizeMode={'cover'}>

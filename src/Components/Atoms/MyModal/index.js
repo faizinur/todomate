@@ -8,7 +8,7 @@ import Animated, {
     withTiming,
 } from 'react-native-reanimated';
 import { log } from '@Utils';
-export default memo(forwardRef((props, ref) => {
+export default memo(forwardRef(({ children }, ref) => {
     const { colors } = useTheme();
     const [modalVisible, setModalVisible] = useState(false);
     const { height } = Dimensions.get('window');
@@ -16,6 +16,7 @@ export default memo(forwardRef((props, ref) => {
         toggle,
     }));
     const toggle = useCallback(() => {
+
         if (modalVisible) {
             // log('tutup')
             contentValue.value = { backgroundColor: `transparent` }
@@ -45,7 +46,7 @@ export default memo(forwardRef((props, ref) => {
                 <TouchableOpacity style={{ flex: 1 }} activeOpacity={.8} onPress={toggle} />
                 <View style={{ width: '100%', backgroundColor: colors.zircon, paddingHorizontal: '5%', paddingTop: '5%', borderTopLeftRadius: 15, borderTopRightRadius: 15 }}>
                     <ScrollView showsVerticalScrollIndicator={false}>
-                        {getValidChildren(props.children)}
+                        {getValidChildren(children)}
                     </ScrollView>
                 </View>
             </Animated.View>

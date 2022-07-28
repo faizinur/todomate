@@ -1,8 +1,8 @@
 import { log } from '@Utils';
 import React, { useState, useCallback } from 'react';
-import { TextInput, Button, useTheme, RadioButton, Checkbox } from 'react-native-paper';
+import { TextInput, Button, useTheme, Chip } from 'react-native-paper';
 import { MyText } from '@Atoms';
-import { View, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
@@ -41,8 +41,11 @@ const MyTextInput = (props) => {
                     right={<></>}
                     left={'left' in props && <></>}
                     secureTextEntry={secureText}
+                    numberOfLines={'numberOfLines' in props ? props.numberOfLines : 1}
+                    multiline={'numberOfLines' in props}
                 />
-                {value.length > 0 && <View style={{ position: 'absolute', right: 3.4, top: 8.6, width: 60, height: 53, justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}>
+                {/* kecuali textarea dan kalau textnya terisi maka print tombol sebelah kanan */}
+                {('numberOfLines' in props == false && value.length > 0) && <View style={{ position: 'absolute', right: 3.4, top: 8.6, width: 60, height: 53, justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}>
                     <TextInput.Icon onPress={_onRightPress} name={'secureTextEntry' in props ? (secureText ? 'eye-outline' : 'eye-off-outline') : 'close-circle'} size={20} color={defaultIconColor} />
                 </View>}
                 {props.error && <MyText small left color={colors.valencia} style={{ marginVertical: 5 }}>* {props.errorText}</MyText>}
@@ -84,8 +87,48 @@ const MyAvatar = props => {
     </View>
 }
 
+
+const MyColorList = props => {
+    const { colors } = useTheme();
+    return <View style={{ height: 66, width: '100%' }}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ flex: 1, flexDirection: 'row' }} contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}>
+            <MyText small opacity={.7}>{props.label} </MyText>
+            <View style={{ flexGrow: 1, justifyContent: 'flex-end', alignItems: 'center', flexDirection: 'row' }}>
+                {props.config.data.colors.map(color =>
+                    <View key={color} style={{ borderWidth: 5, borderColor: props.value == color ? color : 'transparent', width: 25, height: 25, borderRadius: 13, justifyContent: 'center', alignItems: 'center', marginHorizontal: 8, }}>
+                        <TouchableOpacity onPress={() => props?.onselectedColor(color)} activeOpacity={.7} style={{ width: 23, height: 23, borderRadius: 13, backgroundColor: color, borderColor: 'white', borderWidth: 2 }} />
+                    </View>)}
+            </View>
+            <View style={{ width: 30, marginLeft: 15, justifyContent: 'center', alignItems: 'center' }}>
+                <TextInput.Icon onPress={() => log('tambah warna')} name={"plus-circle"} size={25} color={`${colors.shark}77`} />
+            </View>
+        </ScrollView>
+        {props.error && <MyText small left color={colors.valencia} style={{ marginVertical: 5 }}>* {props.errorText}</MyText>}
+    </View >
+}
+
+const MyTaskType = props => {
+    const { colors } = useTheme();
+    return <View style={{ height: 66, width: '100%', marginVertical: 10 }}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ flex: 1, flexDirection: 'row' }} contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}>
+            <MyText small opacity={.7}>{props.label}</MyText>
+            {props.config.data.task.map(task => <Chip key={task.code} mode={'outlined'}
+                style={{ marginHorizontal: 8, backgroundColor: task.code == props.value ? `${colors.caribbeanGreen}cd` : colors.zircon, borderWidth: .8, borderColor: task.code == props.value ? colors.zircon : `${colors.shark}cd`, width: 100, height: 33 }}
+                textStyle={{ fontSize: 10, color: task.code == props.value ? colors.zircon : `${colors.shark}cd` }}
+                onPress={() => props?.onselectedChips(task.code)}
+                selectedColor={colors.caribbeanGreen}
+                theme={{
+                    colors: { primary: colors.caribbeanGreen },
+                    fonts: { regular: { fontFamily: 'ReadexProRegular', fontWeight: '600' } }
+                }}> {task.description} </Chip>)}
+        </ScrollView>
+    </View>
+}
+
 export {
     MyTextInput,
     MyButton,
     MyAvatar,
+    MyColorList,
+    MyTaskType,
 }

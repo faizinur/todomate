@@ -61,7 +61,7 @@ export default ({ onComplete }) => {
                 onLoadStart={() => log('load start')}
                 onLoadEnd={() => log('load end')}
                 source={{ uri: seletedScreen.img }}
-                style={{ height: height - StatusBar.currentHeight, width, backgroundColor: colors.zircon, justifyContent: 'flex-end', alignItems: 'center' }}
+                style={{ height, width, backgroundColor: colors.zircon, justifyContent: 'flex-end', alignItems: 'center' }}
                 resizeMethod={'resize'}
                 imageStyle={{ opacity: 1, backgroundColor: colors.shark }}
                 resizeMode={'cover'}>
