@@ -21,6 +21,7 @@ export default {
         pigeonPost: '#bac5e9',
         valencia: '#E24C4B',
         caribbeanGreen: '#09DB93',
+        lightgray: '#CDCFD2',
         // sticky notes
         persianPink: '#ff7eb9',
         violetRed: '#ff65a3',
@@ -68,7 +69,6 @@ export default {
 // black: '#1B1D21',
 // jumbo: '#75777C',
 // silverChalice: '#B0B0B0',
-// lightgray: '#CDCFD2',
 
 
 // cerulean: '#3BAFDA',

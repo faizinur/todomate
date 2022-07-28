@@ -1,5 +1,5 @@
 import { View, Dimensions, ImageBackground, StatusBar, TouchableOpacity } from 'react-native'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useTheme, Button } from 'react-native-paper';
 import { MyText } from '@Atoms';
 import { log } from '@Utils'
@@ -39,7 +39,13 @@ export default ({ onComplete }) => {
 
 
     const previndex = () => setActiveOnBoardingIndex(prevState => prevState - 1)
-    const nextindex = () => setActiveOnBoardingIndex(prevState => prevState + 1)
+    const nextindex = useCallback(() => {
+        if (activeOnBoardingIndex == 2) {
+            onComplete()
+            return false;
+        }
+        setActiveOnBoardingIndex(prevState => prevState + 1)
+    }, [activeOnBoardingIndex])
 
 
     useEffect(() => {
@@ -60,28 +66,20 @@ export default ({ onComplete }) => {
                 imageStyle={{ opacity: 1, backgroundColor: colors.shark }}
                 resizeMode={'cover'}>
                 <LinearGradient start={{ x: .5, y: 0 }} colors={['transparent', seletedScreen.color]} style={{ height: '90%', width: '100%' }}>
-                    <View style={{ flex: 2 }} />
+                    <View style={{ flex: 4, }} />
                     <View style={{ flex: 1, justifyContent: 'space-around', alignItems: 'center', padding: '5%' }}>
                         <MyText center fontSize={30} numberOfLines={5} color={colors.zircon}>{seletedScreen.title}</MyText>
                         <MyText center fontSize={13} numberOfLines={5} color={colors.zircon}>{seletedScreen.subtitle}</MyText>
-                        <Button
-                            mode="contained"
-                            labelStyle={{ color: colors.zircon, fontWeight: 'bold', fontFamily: 'ReadexProRegular', fontSize: 12 }}
-                            contentStyle={{ height: 40, opacity: .9 }}
-                            onPress={onComplete}
-                            theme={{ colors: { primary: seletedScreen.color } }}>
-                            langsung ajalah
-                        </Button>
                     </View>
                     <View style={{ height: 60, flexDirection: 'row', marginBottom: 12 }}>
-                        <TouchableOpacity disabled={activeOnBoardingIndex == 0} onPress={previndex} style={{ width: 100, justifyContent: 'center', alignItems: 'center' }}>
+                        <TouchableOpacity activeOpacity={.8} disabled={activeOnBoardingIndex == 0} onPress={previndex} style={{ width: 100, justifyContent: 'center', alignItems: 'center' }}>
                             <Icon name={"chevron-left"} size={35} opacity={.65} color={activeOnBoardingIndex == 0 ? 'transparent' : colors.zircon} />
                         </TouchableOpacity>
                         <View style={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
                             {onBoardingData.map((_, index) => <Animated.View key={`screen${index}`} style={[useAnimatedStyle(() => ({ width: withTiming((index == activeOnBoardingIndex ? 4 : 20), { duration: 300 }) })), { backgroundColor: colors.zircon, marginHorizontal: 4, borderRadius: 4, height: 4 }]} />)}
                         </View>
-                        <TouchableOpacity disabled={activeOnBoardingIndex == 2} onPress={nextindex} style={{ width: 100, justifyContent: 'center', alignItems: 'center' }}>
-                            <Icon name={"chevron-right"} size={35} opacity={.65} color={activeOnBoardingIndex == 2 ? 'transparent' : colors.zircon} />
+                        <TouchableOpacity activeOpacity={.8} onPress={nextindex} style={{ width: 100, justifyContent: 'center', alignItems: 'center' }}>
+                            {activeOnBoardingIndex == 2 ? <MyText center fontSize={12} color={colors.zircon}>Lanjut</MyText> : <Icon name={"chevron-right"} size={35} opacity={.65} color={colors.zircon} />}
                         </TouchableOpacity>
                     </View>
                 </LinearGradient>

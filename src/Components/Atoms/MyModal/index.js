@@ -1,4 +1,4 @@
-import { View, Modal, TouchableOpacity, Dimensions, ScrollView } from 'react-native'
+import { View, Modal, TouchableOpacity, Dimensions, ScrollView, StatusBar } from 'react-native'
 import React, { forwardRef, memo, useCallback, useImperativeHandle, useState } from 'react'
 import { MyText } from '@Atoms';
 import { useTheme } from 'react-native-paper';
@@ -40,6 +40,7 @@ export default memo(forwardRef((props, ref) => {
             visible={modalVisible}
             onRequestClose={toggle}
             hardwareAccelerated={true}>
+            <StatusBar backgroundColor={modalVisible ? `${colors.shark}bb` : 'transparent'} />
             <Animated.View style={[slideUpContentStyle, { flex: 1 }]}>
                 <TouchableOpacity style={{ flex: 1 }} activeOpacity={.8} onPress={toggle} />
                 <View style={{ width: '100%', backgroundColor: colors.zircon, paddingHorizontal: '5%', paddingTop: '5%', borderTopLeftRadius: 15, borderTopRightRadius: 15 }}>
