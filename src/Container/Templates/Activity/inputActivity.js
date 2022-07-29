@@ -1,23 +1,19 @@
 const INPUT_ACTIVITY_LIST = [
     {
-        name: 'colorScheme',
+        name: 'tipeTugas',
         value: '',
-        type: 'colorList',
+        type: 'chipTask',
         inputProps: {
-            label: 'colorScheme',
+            label: 'Prioritas wacananya gimana nih?',
         },
-        config: {
-            data: {
-                colors: ['#fbe114', '#4beed1', '#13d3fb', '#b6adff', '#fb1467', '#f5815c', '#148cfb', '#a949c1']
-            }
-        }
     },
     {
         name: 'deadline',
         value: '',
         type: 'text',
         inputProps: {
-            label: 'deadline',
+            label: 'Kapan emang wacanannya?',
+            right: 'calendar-month-outline',
         },
     },
     {
@@ -25,7 +21,8 @@ const INPUT_ACTIVITY_LIST = [
         value: '',
         type: 'text',
         inputProps: {
-            label: 'Tempat',
+            label: 'Wacananya mau dimanasih?',
+            right: 'map-marker-radius',
         }
     },
     {
@@ -33,26 +30,25 @@ const INPUT_ACTIVITY_LIST = [
         value: '',
         type: 'text',
         inputProps: {
-            label: 'details',
+            label: 'sini cerita wacananya dulu dong, mau ngapain aja coba...',
             numberOfLines: 10,
         }
     },
     {
-        name: 'Tipe Tugas',
+        name: 'participant',
         value: '',
-        type: 'chipTask',
+        type: 'tagText',
         inputProps: {
-            label: 'Tipe Tugas',
-        },
-        config: {
-            data: {
-                task: [
-                    { code: 'code 01', description: 'description 01' },
-                    { code: 'code 02', description: 'description 02' },
-                    { code: 'code 03', description: 'description 03' },
-                ]
-            }
+            label: 'tambah partisipan : Malik, Raqib...',
         }
+    },
+    {
+        name: 'colorScheme',
+        value: '',
+        type: 'colorScheme',
+        inputProps: {
+            label: 'jangan lupa hiasin catetannya ya',
+        },
     },
 ];
 const FORM_ACTIVITY_NAME = 'activityForm';

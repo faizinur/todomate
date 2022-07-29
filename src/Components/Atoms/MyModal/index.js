@@ -44,7 +44,8 @@ export default memo(forwardRef(({ children }, ref) => {
             <StatusBar backgroundColor={modalVisible ? `${colors.shark}bb` : 'transparent'} />
             <Animated.View style={[slideUpContentStyle, { flex: 1 }]}>
                 <TouchableOpacity style={{ flex: 1 }} activeOpacity={.8} onPress={toggle} />
-                <View style={{ width: '100%', backgroundColor: colors.zircon, paddingHorizontal: '5%', paddingTop: '5%', borderTopLeftRadius: 15, borderTopRightRadius: 15 }}>
+                <View style={{ width: '100%', backgroundColor: colors.zircon, paddingHorizontal: '5%', borderTopLeftRadius: 15, borderTopRightRadius: 15 }}>
+                    <View style={{ backgroundColor: `${colors.shark}22`, alignSelf: 'center', width: 30, height: 4, borderRadius: 5, marginVertical: 7 }} />
                     <ScrollView showsVerticalScrollIndicator={false}>
                         {getValidChildren(children)}
                     </ScrollView>

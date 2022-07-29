@@ -145,23 +145,24 @@ export default ({ onHideMenu }) => {
                 </LinearGradient>
             </View>
             <MyModal ref={refActivityModal}>
-                <View style={{ backgroundColor: `${colors.shark}22`, alignSelf: 'center', width: 30, height: 5, borderRadius: 5 }} />
-                <View style={{ width: '100%', height: 56, flexDirection: 'row' }}>
-                    <TouchableOpacity activeOpacity={.8} onPress={_onCloseTodo} style={{ width: 60, height: 56, justifyContent: 'center', alignItems: 'flex-start' }}>
-                        <Icon name={'chevron-left'} size={30} color={colors.shark} />
-                    </TouchableOpacity>
-                    <View style={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
-                        <MyText color={colors.shark} size={20} bold>ceritakan sebuah wacana</MyText>
+                <View style={{ paddingVertical: '5%' }}>
+                    <View style={{ width: '100%', height: 56, flexDirection: 'row' }}>
+                        <View style={{ width: 60, height: 56 }} />
+                        <View style={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
+                            <MyText color={`${colors.shark}bb`} size={20} bold>beritahu aku beberapa wacanamu</MyText>
+                        </View>
+                        <TouchableOpacity activeOpacity={.8} onPress={_onCloseTodo} style={{ width: 60, height: 56, justifyContent: 'center', alignItems: 'flex-end' }}>
+                            <Icon name={'close'} size={25} color={`${colors.shark}bb`} />
+                        </TouchableOpacity>
                     </View>
-                    <View style={{ width: 60, height: 56 }} />
+                    <Form
+                        ref={refActivityForm}
+                        formname={FORM_ACTIVITY_NAME}
+                        inputList={INPUT_ACTIVITY_LIST}
+                        onFormSubmit={_submitActivity}
+                        submitLabel={'wacanakan'}
+                    />
                 </View>
-                <Form
-                    ref={refActivityForm}
-                    formname={FORM_ACTIVITY_NAME}
-                    inputList={INPUT_ACTIVITY_LIST}
-                    onFormSubmit={_submitActivity}
-                    submitLabel={'wacanakan'}
-                />
             </MyModal>
         </View>
     )
