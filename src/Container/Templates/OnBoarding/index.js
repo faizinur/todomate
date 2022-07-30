@@ -9,6 +9,8 @@ import Animated, {
     useAnimatedStyle,
     withTiming,
 } from 'react-native-reanimated';
+import { useSwipe } from '@CustomHooks';
+
 export default ({ onComplete }) => {
     const { colors } = useTheme();
     const { height, width } = Dimensions.get('screen')
@@ -38,7 +40,9 @@ export default ({ onComplete }) => {
     const seletedScreen = useMemo(() => onBoardingData[activeOnBoardingIndex], [activeOnBoardingIndex])
 
 
-    const previndex = () => setActiveOnBoardingIndex(prevState => prevState - 1)
+    const previndex = useCallback(() => {
+        setActiveOnBoardingIndex(prevState => prevState > 1 ? prevState - 1 : 0)
+    }, [activeOnBoardingIndex])
     const nextindex = useCallback(() => {
         if (activeOnBoardingIndex == 2) {
             onComplete()
@@ -46,7 +50,7 @@ export default ({ onComplete }) => {
         }
         setActiveOnBoardingIndex(prevState => prevState + 1)
     }, [activeOnBoardingIndex])
-
+    const { onTouchStart, onTouchEnd } = useSwipe(nextindex, previndex)
 
     useEffect(() => {
         log('Mount OnBoarding')
@@ -65,7 +69,7 @@ export default ({ onComplete }) => {
                 resizeMethod={'resize'}
                 imageStyle={{ opacity: 1, backgroundColor: colors.shark }}
                 resizeMode={'cover'}>
-                <LinearGradient start={{ x: .5, y: 0 }} colors={['transparent', seletedScreen.color]} style={{ height: '90%', width: '100%' }}>
+                <LinearGradient onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} start={{ x: .5, y: 0 }} colors={['transparent', seletedScreen.color]} style={{ height: '90%', width: '100%' }}>
                     <View style={{ flex: 4, }} />
                     <View style={{ flex: 1, justifyContent: 'space-around', alignItems: 'center', padding: '5%' }}>
                         <MyText center fontSize={30} numberOfLines={5} color={colors.zircon}>{seletedScreen.title}</MyText>
